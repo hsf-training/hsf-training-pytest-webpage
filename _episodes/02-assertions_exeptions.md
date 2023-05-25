@@ -69,7 +69,7 @@ pytest
 {: .bash}
 
 ~~~
-collected 1 item                                                               
+collected 1 item
 
 test_sample.py F                                                         [100%]
 
@@ -138,8 +138,8 @@ Pytest as well as numpy has a built-in class for floating-point comparisons call
 
 # Exeptions
 
-Exceptions are more sophisticated than assertions. They are the standard error 
-messaging system in most modern programming languages.  Fundamentally, when an 
+Exceptions are more sophisticated than assertions. They are the standard error
+messaging system in most modern programming languages.  Fundamentally, when an
 error is encountered, an informative exception is 'thrown' or 'raised'.
 
 For example, instead of the assertion in the case before, an exception can be
@@ -206,7 +206,7 @@ def mean(num_list):
 
 > ## What else could go wrong?
 >
-> 1. Think of some other type of exception that could be raised by the try 
+> 1. Think of some other type of exception that could be raised by the try
 > block.
 > 2. Guard against it by adding an except clause.
 > 3. Use the mean function in three different ways, so that you cause each

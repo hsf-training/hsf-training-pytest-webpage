@@ -48,9 +48,9 @@ def test_f():
 {: .python}
 
 The above implementation of setup and teardown is usually fine.
-However, it does not guarantee that the `f_setup()` and the `f_teardown()` 
-functions will be called. This is because an unexpected error anywhere in 
-the body of `f()` or `test_f()` will cause the test to abort before the 
+However, it does not guarantee that the `f_setup()` and the `f_teardown()`
+functions will be called. This is because an unexpected error anywhere in
+the body of `f()` or `test_f()` will cause the test to abort before the
 teardown function is reached.
 
 These setup and teardown behaviors are needed when _test fixtures_
