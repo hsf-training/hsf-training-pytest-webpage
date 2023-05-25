@@ -3,6 +3,7 @@ title: Introduction
 teaching: 5
 exercises: 0
 questions:
+- "Whats is Pytest?"
 - "Why test?"
 objectives:
 - "Understand the place of testing in a scientific workflow."
@@ -18,26 +19,21 @@ keypoints:
 
 # What is Pytest?
 
-<!---
-![Pytest](https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Intermediate-Advanced-PyTest-Features_Watermarked.43fb169e7121.jpg)
-[Via Real Python](https://realpython.com/pytest-python-testing/)
--->
+<center><img src="https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Intermediate-Advanced-PyTest-Features_Watermarked.43fb169e7121.jpg" alt="Pytest" style="width:576px;height:324px;"><p><a href="https://realpython.com/pytest-python-testing/">Via Real Python</a></p></center>
 
+Testing the code is a crucial task that confirms that the code is working correctly and meets the quality standards for customers and, in this case, for analysis. Automated tests are important to confirm that code is working correctly. This is called **defensive programming** and the most common way to do it is to add alarms and tests into our code so that it checks itself.
 
-The first step toward getting the right answers from our programs is to assume
-that mistakes *will* happen and to guard against them.  This is called
-**defensive programming** and the most common way to do it is to add alarms and
-tests into our code so that it checks itself.
+At its core, Pytest follows the "convention over configuration" principle, which means it provides sensible defaults and encourages a standardized structure for tests. This allows you to focus on writing test logic rather than dealing with complex setup or boilerplate code.
 
-**Testing** should be a seamless part of scientific software development process.
-This is analogous to experiment design in the experimental science world:
+# Why Test?
 
-- At the beginning of a new project, tests can be used to help guide the 
-  overall architecture of the project.
-- The act of writing tests can help clarify how the software should be perform when you are done. 
-- In fact, starting to write the tests _before_ you even write the software 
-  might be advisable. (Such a practice is called _test-driven development_, 
-  which we will discuss in greater detail [later in the lesson](09-tdd.html).)
+“Trying to improve the quality of software by doing more testing is like trying to lose weight by weighting yourself more often.” - Steve McConnell
+
+- Testing won’t correct a buggy code
+- Testing will tell you were the bugs are…
+- … if (and only if) the test cases cover the scenarios that cause the bugs or occur.
+
+Also, automated tests only test a narrow interpretation of quality software development. They do not help test that your software is useful and help solves a users’ problem.
 
 There are many ways to test software, such as:
 
@@ -63,3 +59,7 @@ which might appear due to new software and updates.
 
 *Integration Tests*: Integration tests check that various pieces of the
 software work together as expected. 
+
+## Why not unit testing?
+
+Python has a built in framework for testing called ``unittest``. It is based on the Java x-unit style framework. Unittest requires developers to create classes derived from the TestCase module and then define the test cases as methods in the class. This means that there is a lot of boilerware code required to execute the tests, in contrast to Pytest, which is more condensed and easier to write.
