@@ -43,10 +43,10 @@ There are many ways to test software, such as:
 - Regression Tests
 - Integration Tests
 
-*Exceptions and Assertions*: While writing code, `exceptions` and `assertions` 
-can be added to sound an alarm as runtime problems come up. These kinds of 
-tests, are embedded in the software iteself and handle, as their name implies, 
-exceptional cases rather than the norm. 
+*Exceptions and Assertions*: While writing code, `exceptions` and `assertions`
+can be added to sound an alarm as runtime problems come up. These kinds of
+tests, are embedded in the software iteself and handle, as their name implies,
+exceptional cases rather than the norm.
 
 *Unit Tests*: Unit tests investigate the behavior of units of code (such as
 functions, classes, or data structures). By validating each software unit
@@ -55,10 +55,10 @@ unexpected behavior that may appear when the units are combined is made vastly
 simpler.
 
 *Regression Tests*: Regression tests defend against new bugs, or regressions,
-which might appear due to new software and updates. 
+which might appear due to new software and updates.
 
 *Integration Tests*: Integration tests check that various pieces of the
-software work together as expected. 
+software work together as expected.
 
 ## 'pytest' vs 'unittest'?
 

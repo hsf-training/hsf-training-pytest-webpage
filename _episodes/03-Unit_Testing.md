@@ -28,7 +28,7 @@ more unit-like than long ones.
 Thus what reasonably constitutes a code unit typically varies from project to
 project and language to language.  A good guideline is that if the code cannot
 be made any simpler logically (you cannot split apart the addition operator) or
-practically (a function is self-contained and well defined), then it is a unit. 
+practically (a function is self-contained and well defined), then it is a unit.
 
 > ## Functions are Like Paragraphs
 >
@@ -37,11 +37,11 @@ practically (a function is self-contained and well defined), then it is a unit.
 > shouldn't be longer than paragraphs.
 > Robert C. Martin, the author of "Clean Code" said : "The first rule of
 > functions is that _they should be small_. The second rule of functions is that
-> _they should be smaller than that_." 
+> _they should be smaller than that_."
 {: .callout}
 
 The desire to unit test code often has the effect of encouraging both the
-code and the tests to be as small, well-defined, and modular as possible.  
+code and the tests to be as small, well-defined, and modular as possible.
 In Python, unit tests typically take the form of test functions that call and make
 assertions about methods and functions in the code base.  To run these test
 functions, a test framework is often required to collect them together. For
@@ -54,7 +54,7 @@ framework to collect and run them.
 Unit tests set-up can be as simple as initializing the
 input values or as complex as creating and initializing concrete instances of a
 class. Ultimately, the test occurs when an assertion is made, comparing the
-observed and expected values. For example, let us test that our mean function 
+observed and expected values. For example, let us test that our mean function
 successfully calculates the known value for a simple list.
 
 Using the previous code, run the following:

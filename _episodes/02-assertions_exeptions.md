@@ -68,7 +68,7 @@ pytest
 ```
 
 ~~~
-collected 1 item                                                               
+collected 1 item
 
 test_sample.py F                                                         [100%]
 
@@ -212,7 +212,7 @@ responsive behavior can be implemented like so:
 
 > ## What else could go wrong?
 >
-> 1. Think of some other type of exception that could be raised by the try 
+> 1. Think of some other type of exception that could be raised by the try
 > block.
 > 2. Guard against it by adding an except clause.
 > 3. Use the mean function in three different ways, so that you cause each
