@@ -41,6 +41,11 @@ python3 –version
 ```bash
 pip install -U pytest
 ```
+- or if you have pip 3:
+
+```bash
+pip3 install -U pytest
+```
 
 - To check the installation open a terminal and run:
 

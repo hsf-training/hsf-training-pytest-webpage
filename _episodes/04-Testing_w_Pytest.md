@@ -19,63 +19,78 @@ We created a suite of tests for our mean function, but it was annoying to run
 them one at a time. It would be a lot better if there were some way to run them
 all at once, just reporting which tests fail and which succeed.
 
-Thankfully, that exists. Recall our tests:
-
-~~~
-from mean import mean
-def test_ints():
-    num_list = [1,2,3,4,5]
-    obs = mean(num_list)
-    exp = 3
-    assert obs == exp
-def test_zero():
-    num_list=[0,2,4,6]
-    obs = mean(num_list)
-    exp = 3
-    assert obs == exp
-def test_double():
-    # This one will fail in Python 2
-    num_list=[1,2,3,4]
-    obs = mean(num_list)
-    exp = 2.5
-    assert obs == exp
-def test_long():
-    big = 100000000
-    obs = mean(range(1,big))
-    exp = big/2.0
-    assert obs == exp
-def test_complex():
-    # given that complex numbers are an unordered field
-    # the arithmetic mean of complex numbers is meaningless
-    num_list = [2 + 3j, 3 + 4j, -32 - 2j]
-    obs = mean(num_list)
-    exp = NotImplemented
-    assert obs == exp
-~~~
-{: .python}
-
-Once these tests are written in a file called `test_mean.py`, the command
+Thankfully, that exists. Recalling our last test, write it in a file called `test_invariant_mass.py`, the command
 `pytest` can be run on the terminal or command line from the directory containing the tests (note that you'll have to use `py.test` for older versions of the `pytest` package):
 
-~~~
+```bash
 $ pytest
+```
+
 ~~~
-{: .bash}
-~~~
-collected 5 items
-test_mean.py ....F
-================================== FAILURES ===================================
-________________________________ test_complex _________________________________
-    def test_complex():
-        # given that complex numbers are an unordered field
-        # the arithmetic mean of complex numbers is meaningless
-        num_list = [2 + 3j, 3 + 4j, -32 - 2j]
-        obs = mean(num_list)
-        exp = NotImplemented
->       assert obs == exp
-E       assert (-9+1.6666666666666667j) == NotImplemented
-test_mean.py:34: AssertionError
-===================== 1 failed, 4 passed in 2.71 seconds ======================
+collected 3 items                                                                          
+
+test_invariant_mass.py F.F                                                           [100%]
+
+========================================= FAILURES =========================================
+______________________________________ test_with_list ______________________________________
+
+energy = array([1, 2, 3]), momentum = array([6, 7, 8])
+
+    def invariant_mass(energy, momentum):
+        try:
+            if (energy < 0).any() or (momentum < 0).any():
+                raise ValueError("Energy and momentum must be positive")
+    
+            else:
+>               return cmath.sqrt(energy**2 - momentum**2)
+E               TypeError: only length-1 arrays can be converted to Python scalars
+
+sample.py:9: TypeError
+
+During handling of the above exception, another exception occurred:
+
+    def test_with_list():
+>       assert invariant_mass(np.array([1, 2, 3]), np.array([6, 7, 8]))
+
+test_invariant_mass.py:5: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+energy = array([1, 2, 3]), momentum = array([6, 7, 8])
+
+    def invariant_mass(energy, momentum):
+        try:
+            if (energy < 0).any() or (momentum < 0).any():
+                raise ValueError("Energy and momentum must be positive")
+    
+            else:
+                return cmath.sqrt(energy**2 - momentum**2)
+    
+        except TypeError:
+>           raise TypeError("Please insert a number or list")
+E           TypeError: Please insert a number or list
+
+sample.py:12: TypeError
+______________________________________ test_negative _______________________________________
+
+    def test_negative():
+>       assert invariant_mass(np.array([-3]), np.array([6]))
+
+test_invariant_mass.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+energy = array([-3]), momentum = array([6])
+
+    def invariant_mass(energy, momentum):
+        try:
+            if (energy < 0).any() or (momentum < 0).any():
+>               raise ValueError("Energy and momentum must be positive")
+E               ValueError: Energy and momentum must be positive
+
+sample.py:6: ValueError
+================================= short test summary info ==================================
+FAILED test_invariant_mass.py::test_with_list - TypeError: Please insert a number or list
+FAILED test_invariant_mass.py::test_negative - ValueError: Energy and momentum must be po...
+=============================== 2 failed, 1 passed in 0.72s ================================
 ~~~
 {: .output}
 
@@ -100,46 +115,30 @@ skipped tests (because the test is not applicable on your system) or a `x` for a
 failure (because the developers could not fix it promptly). After the dots, pytest
 will print summary information.
 
-Without changing the tests, alter the mean.py file from the previous section until it passes.
-When it passes, `pytest` will produce results like the following:
-
-~~~
-$ pytest
-~~~
-{: .bash}
-
-~~~
-collected 5 items
-test_mean.py .....
-========================== 5 passed in 2.68 seconds ===========================
-~~~
-{: .output}
-
 > ## Show what tests are executed
 >
-> Using `pytest -v` will result in `pytest` listing which tests are executed
-> and whether they pass or not:
-> ~~~
-> $ py.test
-> ~~~
-> {: .bash}
+> Pytest always show a list of passed arguments at the end of the test.
+> Fixing the error of the negative output and leaving the error of the array will show the
+> following passed test and failed test:
+>
+> ```bash
+> $ pytest
+> ```
 >
 > ~~~
-> collected 5 items
+> collected 3 items                                                                          
+> 
+> test_invariant_mass.py F..                                                           [100%]
 >
-> test_mean.py .....
->
-> test_mean.py::test_ints PASSED
-> test_mean.py::test_zero PASSED
-> test_mean.py::test_double PASSED
-> test_mean.py::test_long PASSED
-> test_mean.py::test_complex PASSED
->
-> ========================== 5 passed in 2.57 seconds ===========================
+> ...
+> ================================= short test summary info ==================================
+> FAILED test_invariant_mass.py::test_with_list - TypeError: Please insert a number or list
+> =============================== 1 failed, 2 passed in 0.72s ================================
 > ~~~
 > {: .output}
 >
 {: .callout}
+
 As we write more code, we would write more tests, and pytest would produce
 more dots.  Each passing test is a small, satisfying reward for having written
 quality scientific software. Now that you know how to write tests, let's go

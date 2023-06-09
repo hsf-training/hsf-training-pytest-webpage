@@ -19,7 +19,7 @@ keypoints:
 ---
 
 Unit tests are so called because they exercise the functionality of the code by
-interrogating individual functions and methods. Functions and methods can often
+interrogating individual functions. Functions can often
 be considered the atomic units of software because they are indivisible.
 However, what is considered to be the smallest code _unit_ is subjective. The
 body of a function can be long or short, and shorter functions are arguably
@@ -51,44 +51,27 @@ framework to collect and run them.
 
 ## Unit Tests Are Just Functions
 
-Unit tests are typically made of three pieces, some set-up, a number of
-assertions, and some tear-down. Set-up can be as simple as initializing the
+Unit tests set-up can be as simple as initializing the
 input values or as complex as creating and initializing concrete instances of a
 class. Ultimately, the test occurs when an assertion is made, comparing the
 observed and expected values. For example, let us test that our mean function 
 successfully calculates the known value for a simple list.
 
-Before running the next code, save your `mean` function to a file called mean.py in the working directory.
+Using the previous code, run the following:
 
-You can use this code to save to file:
+```python
+from invariant_mass import invariant_mass
+import numpy as np 
 
-~~~
-def mean(num_list):
-    try:
-        return sum(num_list)/len(num_list)
-    except ZeroDivisionError :
-        return 0
-    except TypeError as detail :
-        msg = "The algebraic mean of an non-numerical list is undefined.\
-               Please provide a list of numbers."
-        raise TypeError(detail.__str__() + "\n" +  msg)
-~~~
-{: .python}
+e = [1, 2, 3]
+m = [6, 7, 8]
 
-Now, run the following code:
-
-~~~
-from mean import mean
-def test_ints():
-    num_list = [1, 2, 3, 4, 5]
-    obs = mean(num_list)
-    exp = 3
-    assert obs == exp
-~~~
-{: .python}
+ def test_answer():
+   assert invariant_mass(np.array(e), np.array(m))
+```
 
 The test above: 
-- sets up the input parameters (the simple list [1, 2, 3, 4, 5]);
+- sets up the input parameters (with two simple lists [1, 2, 3] and [6, 7, 8]);
 - collects the observed result;
 - declares the expected result (calculated with our human brain);
 - and compares the two with an assertion.
@@ -96,52 +79,30 @@ The test above:
 A unit test suite is made up of many tests just like this one. A single
 implemented function may be tested in numerous ways.
 
-In a file called `test_mean.py`, implement the following code:
+In a file called `test_invariant_mass.py`, implement the following code:
 
-~~~
-from mean import mean
-def test_ints():
-    num_list = [1, 2, 3, 4, 5]
-    obs = mean(num_list)
-    exp = 3
-    assert obs == exp
+```python
+from invariant_mass import invariant_mass
+import numpy as np 
+
+def test_with_list():
+    assert invariant_mass(np.array([1, 2, 3]), np.array([6, 7, 8]))
+
 def test_zero():
-    num_list=[0,2,4,6]
-    obs = mean(num_list)
-    exp = 3
-    assert obs == exp
-def test_double():
-    # This one will fail in Python 2
-    num_list=[1,2,3,4]
-    obs = mean(num_list)
-    exp = 2.5
-    assert obs == exp
-def test_long():
-    big = 100000000
-    obs = mean(range(1,big))
-    exp = big/2.0
-    assert obs == exp
-def test_complex():
-    # given that complex numbers are an unordered field
-    # the arithmetic mean of complex numbers is meaningless
-    num_list = [2 + 3j, 3 + 4j, -32 - 2j]
-    obs = mean(num_list)
-    exp = NotImplemented
-    assert obs == exp
-~~~
-{: .python}
+    assert invariant_mass(np.array([2]), np.array([0]))
 
-Import the `test_mean` package and run each test like this:
+def test_negative():
+    assert invariant_mass(np.array([-3]), np.array([6]))
+```
 
-~~~
-from test_mean import test_ints, test_zero, test_double, test_long, test_complex
-test_ints()
+On another file, import the `test_invariant_mass` package, save
+the file as `run.py` run each test like this:
+
+```python
+from test_invariant_mass import test_with_list, test_zero, test_negative
+test_with_list()
 test_zero()
-test_double()
-test_long()
-test_complex()  ## Please note that this one might fail. You'll get an error message showing which tests failed
-~~~
-{: .python}
-
+test_negative()
+``` 
 
 Well, **that** was tedious.

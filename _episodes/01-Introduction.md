@@ -40,7 +40,7 @@ There are many ways to test software, such as:
 - Assertions
 - Exceptions
 - Unit Tests
-- Regresson Tests
+- Regression Tests
 - Integration Tests
 
 *Exceptions and Assertions*: While writing code, `exceptions` and `assertions` 
@@ -60,6 +60,6 @@ which might appear due to new software and updates.
 *Integration Tests*: Integration tests check that various pieces of the
 software work together as expected. 
 
-## Why not unit testing?
+## 'pytest' vs 'unittest'?
 
 Python has a built in framework for testing called ``unittest``. It is based on the Java x-unit style framework. Unittest requires developers to create classes derived from the TestCase module and then define the test cases as methods in the class. This means that there is a lot of boilerware code required to execute the tests, in contrast to Pytest, which is more condensed and easier to write.
