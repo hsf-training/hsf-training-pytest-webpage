@@ -27,7 +27,7 @@ $ pytest
 ```
 
 ~~~
-collected 3 items                                                                          
+collected 3 items
 
 test_invariant_mass.py F.F                                                           [100%]
 
@@ -40,7 +40,7 @@ energy = array([1, 2, 3]), momentum = array([6, 7, 8])
         try:
             if (energy < 0).any() or (momentum < 0).any():
                 raise ValueError("Energy and momentum must be positive")
-    
+
             else:
 >               return cmath.sqrt(energy**2 - momentum**2)
 E               TypeError: only length-1 arrays can be converted to Python scalars
@@ -52,8 +52,8 @@ During handling of the above exception, another exception occurred:
     def test_with_list():
 >       assert invariant_mass(np.array([1, 2, 3]), np.array([6, 7, 8]))
 
-test_invariant_mass.py:5: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_invariant_mass.py:5:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 energy = array([1, 2, 3]), momentum = array([6, 7, 8])
 
@@ -61,10 +61,10 @@ energy = array([1, 2, 3]), momentum = array([6, 7, 8])
         try:
             if (energy < 0).any() or (momentum < 0).any():
                 raise ValueError("Energy and momentum must be positive")
-    
+
             else:
                 return cmath.sqrt(energy**2 - momentum**2)
-    
+
         except TypeError:
 >           raise TypeError("Please insert a number or list")
 E           TypeError: Please insert a number or list
@@ -75,8 +75,8 @@ ______________________________________ test_negative ___________________________
     def test_negative():
 >       assert invariant_mass(np.array([-3]), np.array([6]))
 
-test_invariant_mass.py:11: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_invariant_mass.py:11:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 energy = array([-3]), momentum = array([6])
 
@@ -126,8 +126,8 @@ will print summary information.
 > ```
 >
 > ~~~
-> collected 3 items                                                                          
-> 
+> collected 3 items
+>
 > test_invariant_mass.py F..                                                           [100%]
 >
 > ...

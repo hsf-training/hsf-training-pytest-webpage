@@ -41,7 +41,7 @@ Traceback (most recent call last):
 
 (Nothing happened because it "passed" but mind we are not testing something here really, we are just asserting that True is in fact == True)
 
-Assertions halt code execution instantly if the comparison is false. 
+Assertions halt code execution instantly if the comparison is false.
 It does nothing at all if the comparison is true. These are therefore a very
 good tool for guarding the function against foolish (e.g. human) input.
 
@@ -114,9 +114,9 @@ than a list of numbers? Or even, if it is a NaN result?
 > What happens if we use numpy instead of cmath in the code? Why we get a `NaN` as an answer?
 >
 > > ## Solution
-> > 
+> >
 > > In `numpy`, NaN is a float and assigning a NaN sets the imaginary part to zero. From the programmer's point
-> > of view, it is a logical behavior but not mathematically (definition of not a number). This can be a 
+> > of view, it is a logical behavior but not mathematically (definition of not a number). This can be a
 > > used as a marker for invalid data, but in this case it doesn't help.
 > {: .solution}
 {: .challenge}
@@ -149,9 +149,9 @@ True
 
 # Exceptions
 
-Exceptions are more sophisticated than assertions. They are the standard error 
-messaging system (unforseen circumstance) in most modern programming languages. Fundamentally, when an 
-error is encountered, an informative exception is 'thrown' or 'raised'. Mind that a failed assert, 
+Exceptions are more sophisticated than assertions. They are the standard error
+messaging system (unforseen circumstance) in most modern programming languages. Fundamentally, when an
+error is encountered, an informative exception is 'thrown' or 'raised'. Mind that a failed assert,
 also raises an exception `AssertionError`, so be very careful.
 
 For example, instead of the assertion in the case before, an exception can be
@@ -163,7 +163,7 @@ used.
  def invariant_mass(energy, momentum):
     if (energy**2 < momentum**2).any():
         raise Exception("Energy has to be greater than momentum")
-    
+
     return cmath.sqrt(energy**2 - momentum**2)
 ```
 
@@ -172,7 +172,7 @@ An exception be used to trigger additional error messages or an alternative
 behavior rather than immediately halting code
 execution, the exception can be 'caught' upstream with a try-except block.
 When wrapped in a try-except block, the exception can be intercepted before it reaches
-global scope and halts execution. 
+global scope and halts execution.
 
 To add information or replace the message before it is passed upstream, the try-catch
 block can be used to catch-and-reraise the exception:
@@ -199,13 +199,13 @@ responsive behavior can be implemented like so:
     try:
         if (energy**2 < momentum**2).any():
             raise ValueError("Energy has to be greater than momentum")
-    
+
         elif (energy < 0).any() or (momentum < 0).any():
             raise ValueError("Energy and momentum must be positive")
 
         else:
             return cmath.sqrt(energy**2 - momentum**2)
-            
+
     except TypeError:
         raise TypeError("Please insert a number or list")
 ```

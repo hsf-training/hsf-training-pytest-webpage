@@ -61,7 +61,7 @@ Using the previous code, run the following:
 
 ```python
 from invariant_mass import invariant_mass
-import numpy as np 
+import numpy as np
 
 e = [1, 2, 3]
 m = [6, 7, 8]
@@ -70,7 +70,7 @@ m = [6, 7, 8]
    assert invariant_mass(np.array(e), np.array(m))
 ```
 
-The test above: 
+The test above:
 - sets up the input parameters (with two simple lists [1, 2, 3] and [6, 7, 8]);
 - collects the observed result;
 - declares the expected result (calculated with our human brain);
@@ -83,7 +83,7 @@ In a file called `test_invariant_mass.py`, implement the following code:
 
 ```python
 from invariant_mass import invariant_mass
-import numpy as np 
+import numpy as np
 
 def test_with_list():
     assert invariant_mass(np.array([1, 2, 3]), np.array([6, 7, 8]))
@@ -103,6 +103,6 @@ from test_invariant_mass import test_with_list, test_zero, test_negative
 test_with_list()
 test_zero()
 test_negative()
-``` 
+```
 
 Well, **that** was tedious.
