@@ -8,7 +8,7 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-pytest-webpage/main.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-pytest-webpage/main)
 [![pages-build-deployment](https://github.com/hsf-training/hsf-training-pytest-webpage/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-pytest-webpage/actions/workflows/pages/pages-build-deployment)
 
-# Unit testing with pytest
+# Unit Testing with Pytest
 
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-pytest-webpage/) for the training website!
