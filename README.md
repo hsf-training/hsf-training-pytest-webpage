@@ -20,7 +20,7 @@ Learn to test your code with pytest.
 
 * 🎥 [Fixme Sample event Dec 1 - 13, 2022](https://indico.cern.ch/)
 
-Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
+Emoji key: 🎥 (full video recordings available), ⛏️ (hackathon)
 
 ## 🤗 Contributing
 <!-- CENTRALLY MAINTAINED SECTION -->
